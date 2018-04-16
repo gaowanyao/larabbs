@@ -48,10 +48,15 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+//        达式里的第二个 captcha 是 mews/captcha 自定义的表单验证规则。扩展包非常巧妙地利用了 Laravel 表单验证器提供的 自定义表单验证规则 功能。令我们在开发验证码时非常方便
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'captcha'  => 'required|captcha',
+        ],[
+            'captcha.required'=>"验证码不能为空",
+            'captcha.captcha'=>"请输入正确的验证码",
         ]);
     }
 
