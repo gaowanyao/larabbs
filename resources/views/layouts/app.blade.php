@@ -14,7 +14,7 @@
     {{--继承此模板的页面，如果没有定制 title 区域的话，就会自动使用第二个参数 GCAN 作为标题前缀。--}}
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}?cc=121" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}?cc={{ rand(1,99999) }}" rel="stylesheet">
     {{--使用当前请求的协议（ HTTP 或 HTTPS ）为资源文件生成一个 URL--}}
     {{--生成 http://larabbs.gcan.top/css/app.css --}}
 </head>

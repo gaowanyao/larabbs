@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\UserRequest;
+use App\Handlers\ImageUploadHandler;
 //use Carbon\Carbon;
 
 //引入了 App\Models\User 用户模型 show() 方法中使用到 User 模型 所以我们必须先引用
@@ -99,9 +100,19 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, User $user)
+    public function update(UserRequest $request,ImageUploadHandler $uploader, User $user)
     {
+
+//        因为我们使用了命名空间，所以需要在顶部加载 use App\Handlers\ImageUploadHandler;；
+//$data = $request->all(); 赋值 $data 变量，以便对更新数据的操作；
+//以下代码处理了图片上传的逻辑，注意 if ($result) 的判断是因为 ImageUploadHandler 对文件后缀名做了限定，不允许的情况下将返回 false：
         $data = $request->all();
+        if ($request->avatar){
+            $result = $uploader->save($request->avatar,'avatars',$user->id,362);
+            if($result){
+                $data['avatar'] = $result['path'];
+            }
+        }
         $user->update($data);
 //        居然是空的，所以很明显，刚刚数据并没有更新成功。
 //经过一番调试以后，原来是因为我们没有在 User.php 模型文件中，将 introduction 字段添加至 $fillable 属性中。$fillable 属性的作用是防止用户随意修改模型数据，只有在此属性里定义的字段，才允许修改，否则忽略。我们只需请按下图新增字段即可

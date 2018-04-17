@@ -13,8 +13,8 @@
             @include('common.error')
 
             <div class="panel-body">
-
-                <form action="{{ route('users.update', $user->id) }}" method="POST" accept-charset="UTF-8">
+               {{--请记住，在图片或者文件上传时，为表单添加此句声明是必须的  enctype="multipart/form-data" --}}
+                <form action="{{ route('users.update', $user->id) }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
                     <input type="hidden" name="_method" value="PUT">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -24,12 +24,23 @@
                     </div>
                     <div class="form-group">
                         <label for="email-field">邮 箱</label>
-                        <input class="form-control" readonly type="text" name="email" id="email-field" value="{{ old('email', $user->email ) }}" />
+                        <input class="form-control" readonly type="text"  id="email-field" value="{{ old('email', $user->email ) }}" />
                     </div>
                     <div class="form-group">
                         <label for="introduction-field">个人简介</label>
                         <textarea name="introduction" id="introduction-field" class="form-control" rows="3">{{ old('introduction', $user->introduction ) }}</textarea>
                     </div>
+
+                    <div class="form-group">
+                        <label for="" class="avatar-label">用户头像</label>
+                        <input type="file" name="avatar">
+
+                        @if($user->avatar)
+                            <br>
+                            <img class="thumbnail img-responsive" src="{{ $user->avatar }}" width="200" />
+                        @endif
+                    </div>
+
                     <div class="well well-sm">
                         <button type="submit" class="btn btn-primary">保存</button>
                     </div>
