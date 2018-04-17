@@ -29,6 +29,7 @@
 
     <div class="container">
 
+        @include('layouts._message')
         @yield('content')
         {{--占位符声明，允许继承此模板的页面注入内容。--}}
 
