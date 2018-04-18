@@ -1,3 +1,19 @@
+```
+用户注册登录功能的开发；
+学会查看 Whoops 报错和定位问题；
+添加注册验证码；
+数据库视图工具查看 Homestead 中的数据库；
+资源路由和资源控制器；
+隐性路由模型绑定；
+使用 Chrome 开发者工具查看网络请求；
+使用表单请求类来验证用户数据（FormRequest）；
+验证错误消息中文化；
+Carbon 友好时间输出中文化；
+用户图片上传；
+图片分辨率验证；
+图片裁剪；
+使用授权策略来做用户访问控制。
+```
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
