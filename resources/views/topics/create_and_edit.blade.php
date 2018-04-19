@@ -10,14 +10,15 @@
         <div class="panel panel-default">
             
             <div class="panel-heading">
-                <h1>
-                    <i class="glyphicon glyphicon-edit"></i> Topic /
+                <h2 class="text-center">
+                    <i class="glyphicon glyphicon-edit"></i>
+                    {{--Topic /--}}
                     @if($topic->id)
-                        Edit #{{$topic->id}}
+                        编辑话题
                     @else
-                        Create
+                        新建话题
                     @endif
-                </h1>
+                </h2>
             </div>
 
             @include('common.error')
