@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\UserRequest;
 use App\Handlers\ImageUploadHandler;
+use App\Models\Topic;
 //use Carbon\Carbon;
 
 //引入了 App\Models\User 用户模型 show() 方法中使用到 User 模型 所以我们必须先引用
@@ -57,7 +58,7 @@ class UsersController extends Controller
 //1). 路由声明时必须使用 Eloquent 模型的单数小写格式来作为 路由片段参数，User 对应 {user}：
 //我们将用户对象变量 $user 通过 compact 方法转化为一个关联数组，并作为第二个参数传递给 view 方法，将变量数据传递到视图中。
 //show 方法添加完成之后，在视图中，我们即可直接使用 $user 变量来获取 view 方法传递给视图的用户数据。
-    public function show(User $user)
+    public function show(User $user,Topic $topic)
     {
 //Carbon 是继承自 PHP DateTime 类 的子类，但比后者提供了更加丰富、更加语义化的 API。其中一个比较实用的 API 就是 diffForHumans 方法，几乎每个用 Laravel 构建的项目中都有用到它。
 //比如，一个博客系统里的文章发布时间，显示格式可能就像下面这样：
@@ -71,7 +72,8 @@ class UsersController extends Controller
 //        Carbon::setLocale('zh');
 
 //        $user = User::find($id);
-        return view("users.show",compact('user'));
+        $topics = $topic->where('user_id',$user->id)->recent()->paginate(5);
+        return view("users.show",compact('user','topics'));
     }
 
 //    /**

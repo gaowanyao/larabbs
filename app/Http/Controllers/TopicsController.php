@@ -11,7 +11,20 @@ class TopicsController extends Controller
 {
     public function __construct()
     {
+//        $this->test();
         $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
+    public function test(){
+        $int1 = 1;
+        $int2 = 2;
+        $int3 = 1;
+        echo $int1 <=> $int3;
+        echo "<br/>";
+        echo $int1 <=> $int2;
+        echo "<br/>";
+        echo $int2 <=> $int3;
+        die();
     }
 
 	public function index(Request $request,Topic $topic)
