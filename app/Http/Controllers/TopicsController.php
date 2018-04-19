@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TopicRequest;
 use Auth;
+use App\Handlers\ImageUploadHander;
 
 class TopicsController extends Controller
 {
@@ -84,5 +85,27 @@ class TopicsController extends Controller
 		$topic->delete();
 
 		return redirect()->route('topics.index')->with('message', 'Deleted successfully.');
+	}
+
+    public function uploadImage (Request $request,ImageUploadHander $uploader)
+    {
+        //初始化返回数据，默认是失败的
+        $data = [
+            'success'=>false,
+            'msg'=>'上传失败!',
+            'file_path'=>''
+        ];
+        //判断是否有上传文件，并赋值给$file
+        if($file = $request->upload_file){
+            //保存图片到本地
+            $result = $uploader->save($request->upload_file,'topics',\Auth::id(),1024);
+
+            if($request){
+                $data['file_path'] = $result['path'];
+                $data['msg'] = "上传成功!";
+                $data['success'] = true;
+            }
+        }
+        return $data;
 	}
 }
