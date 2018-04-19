@@ -14,6 +14,14 @@ Carbon 友好时间输出中文化；
 图片裁剪；
 使用授权策略来做用户访问控制。
 ```
+```
+代码生成器；
+使用数据迁移生成初始化数据；
+使用『开发者工具栏』调优程序；
+使用『预加载』修复 N +1 问题；
+使用扩展包实现导航栏选中状态；
+Laravel 本地作用域；
+```
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
