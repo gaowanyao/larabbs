@@ -17,6 +17,11 @@
     <link href="{{ asset('css/app.css') }}?cc={{ rand(1,99999) }}" rel="stylesheet">
     {{--使用当前请求的协议（ HTTP 或 HTTPS ）为资源文件生成一个 URL--}}
     {{--生成 http://larabbs.gcan.top/css/app.css --}}
+
+    {{--Simditor 的样式和脚本文件只需要在帖子创建页面中使用，出于性能考虑，我们将只在话题创建页码中加载这些文件。--}}
+    {{--首先我们需要在主要布局文件中种下锚点 styles 和 scripts：--}}
+    @yield('styles')
+
 </head>
 
 <body>
@@ -41,5 +46,7 @@
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
+@yield('scripts')
+
 </body>
 </html>
