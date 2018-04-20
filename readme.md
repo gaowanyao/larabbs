@@ -23,7 +23,7 @@ Carbon 友好时间输出中文化；
 Laravel 本地作用域；
 ```
 
-```angular2html
+```
 模型观察器监控 Eloquent 模型事件；
 熟悉代码生成器生成的表单验证类；
 集成 WYSIWYG 编辑器；
