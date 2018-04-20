@@ -96,6 +96,6 @@
 // fileKey —— 是服务器端获取图片的键值，我们设置为 upload_file;
 //         connectionCount —— 最多只能同时上传 3 张图片；
 // leaveConfirm —— 上传过程中，用户关闭页面时的提醒。
-        
+
     </script>
 @stop
