@@ -35,6 +35,20 @@ Laravel 本地作用域；
 队列系统的使用，新建任务类，命令行队列监听；
 Horizon 命令行和仪表板使用；
 ```
+
+
+```angular2html
+新的 Blade 语法 includeWhen；
+使用模型监控器实现计数器 —— reply_count；
+评论的 XSS 过滤；
+Laravel 消息通知 —— 数据库频道；
+Laravel 消息通知 —— Email 频道；
+Email SMTP 配置 —— 以 QQ 邮箱为例；
+重写 Trait 方法 —— 具体是 Notifiable 的 notify()；
+使用队列来发送邮件；
+使用模型监控器的 deleted 方法做连带删除
+```
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
