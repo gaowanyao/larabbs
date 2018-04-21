@@ -15,6 +15,12 @@ class ReplyPolicy extends Policy
 
     public function destroy(User $user, Reply $reply)
     {
-        return true;
+
+//        dump($reply->user_id);
+//        dump($reply->topic->user_id);
+//        dd($user->id);
+//        自己的帖子可以删除别人的回复，以及别人的帖子可以自己删除自己的回复
+        return $user->isAuthorOf($reply) || $user->isAuthorOf($reply->topic);
+//        return true;
     }
 }
