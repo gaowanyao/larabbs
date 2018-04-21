@@ -72,8 +72,9 @@ class UsersController extends Controller
 //        Carbon::setLocale('zh');
 
 //        $user = User::find($id);
-        $topics = $topic->where('user_id',$user->id)->recent()->paginate(5);
-        return view("users.show",compact('user','topics'));
+//        $topics = $topic->where('user_id',$user->id)->recent()->paginate(5);
+//        return view("users.show",compact('user','topics'));
+        return view("users.show",compact('user'));
     }
 
 //    /**
