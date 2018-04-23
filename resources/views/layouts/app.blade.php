@@ -46,6 +46,11 @@
     {{--加载页面尾部导航区块的子模板。页面的『顶部导航』和『尾部导航』子模板并不存在，接下来由我们来创建这两个模板。--}}
 </div>
 
+@if (app()->isLocal())
+    sad
+    @include('sudosu::user-selector')
+@endif
+
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
 @yield('scripts')
