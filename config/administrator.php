@@ -62,6 +62,8 @@ return array(
     'menu' => [
         '用户与权限' => [
             'users',
+            'roles',
+            'permissions',
         ],
     ],
 
@@ -83,7 +85,7 @@ return array(
      *
      * @type bool
      */
-    'use_dashboard' => false,
+    'use_dashboard' => true,
 
     /*
      * If you want to create a dashboard view, provide the view string here.
