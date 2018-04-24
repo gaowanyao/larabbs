@@ -13,7 +13,12 @@
     <title>@yield('title', 'GCAN') </title>
     {{--继承此模板的页面，如果没有定制 title 区域的话，就会自动使用第二个参数 GCAN 作为标题前缀。--}}
 
-    <meta name="description" content="@yield('description','GCAN 开发者社区')"/>
+    {{--<meta name="description" content="@yield('description','GCAN 开发者社区')"/>--}}
+
+    <title>@yield('title', 'LaraBBS') - {{ setting('site_name', 'GCAN') }}</title>
+    <meta name="description" content="@yield('description', setting('seo_description', 'GCAN'))" />
+    <meta name="keyword" content="@yield('keyword', setting('seo_keyword', 'GCAN,社区,论坛,开发者论坛'))" />
+
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}?cc={{ rand(1,99999) }}" rel="stylesheet">
