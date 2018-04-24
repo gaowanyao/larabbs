@@ -93,7 +93,7 @@ return array(
      *
      * @type bool
      */
-    'use_dashboard' => true,
+    'use_dashboard' => false,
 
     /*
      * If you want to create a dashboard view, provide the view string here.
@@ -123,7 +123,7 @@ return array(
      *
      * @type string
      */
-    'login_path' => 'login',
+//    'login_path' => 'login',
 
     /*
      * The logout path is the path where Administrator will send the user when they click the logout link
@@ -132,7 +132,9 @@ return array(
      */
 //    'logout_path' => false,
     // 当选项 `permission` 权限检测不通过时，会重定向用户到此处设置的路径
-    'login_path' => 'login',
+//    'login_path' => 'login',
+    'login_path' => 'permission-denied',
+
     /*
      * This is the key of the return path that is sent with the redirection to your login_action. Session::get('redirect') will hold the return URL.
      *
