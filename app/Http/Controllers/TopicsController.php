@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Topic;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -31,7 +32,7 @@ class TopicsController extends Controller
         die();
     }
 
-	public function index(Request $request,Topic $topic)
+	public function index(Request $request,Topic $topic, User $user)
 	{
 //        为了读取 user 和 category，每次的循环都要查一下 users 和 categories 表，在本例子中我们查询了 30 条话题数据，那么最终我需要执行的查询语句就是 30 * 2 + 1 = 61 条语句。如果我第一次查询出来的是 N 条记录，那么最终需要执行的 SQL 语句就是 N+1 次：
 //        https://d.laravel-china.org/docs/5.4/eloquent-relationships#eager-loading
@@ -39,7 +40,10 @@ class TopicsController extends Controller
 
 //        dump($request->order);
         $topics = $topic->withOrder($request->order)->paginate(10);
-		return view('topics.index', compact('topics'));
+
+        $active_users = $user->getActiveUsers();
+//        dd($active_users);
+		return view('topics.index', compact('topics', 'active_users'));
 	}
 
     public function show(Request $request,Topic $topic)
